@@ -1,0 +1,44 @@
+
+main{
+    height: 80vh;
+    background-color: white;
+    .section__gallery{
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+        gap: 3px;
+        padding: 0px 10px ;
+        overflow: scroll;
+        margin-top: 10px;
+        justify-content: center;
+        gap: 40px;
+        /* div{
+            width: 150px;
+            height: 200px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            background-image: url(../../images/pantalones.jpg);
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            color: black;
+            border-radius: 10px;
+            &::after{
+                content: "Hombre";
+                position: absolute;
+                top: 20%;
+                right: 20%;
+                left: 20%;
+                bottom: 20%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 1.5rem;
+                line-height: 100px;
+            }
+            
+        } */
+    }
+}

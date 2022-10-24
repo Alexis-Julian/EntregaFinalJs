@@ -1,0 +1,48 @@
+.container__admin {
+  display: flex;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.lado__administrador {
+  margin-top: 10px;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #e3fdfd;
+  height: 18.75rem;
+  width: 18.75rem;
+  overflow: hidden;
+  font-size: 0.8em;
+  padding: 10px;
+  margin-bottom: 10px;
+  &__section1 {
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+    align-items: center;
+  }
+  &__section2 {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  &__section3 {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+  }
+  & button {
+    background-color: white;
+    border-top: 1px solid black;
+  }
+}

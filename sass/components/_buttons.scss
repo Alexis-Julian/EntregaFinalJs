@@ -1,0 +1,62 @@
+.heart__count {
+  font-size: 0.5em;
+  background-color: white;
+  color: black;
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+}
+/* --------------------------------- */
+
+.indicator {
+  position: absolute;
+  content: '';
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(1.25rem);
+  border-radius: 50%;
+  right: 0;
+  transition: 400ms;
+}
+
+.activecart {
+  transform: translateX(-155px);
+  transition: 400ms;
+}
+.active {
+  transform: translateX(-310px);
+  transition: 400ms;
+}
+.navegacion {
+  padding: 10px;
+  height: 10%;
+  &__ul {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 28px 6px rgba(0, 0, 0, 0.61) inset;
+    -webkit-box-shadow: 0rem 0px 28px 6px rgba(0, 0, 0, 0.61) inset;
+    -moz-box-shadow: 0px 0px 28px 6px rgba(0, 0, 0, 0.61) inset;
+    gap: 100px;
+    width: 350px;
+    border-radius: 20px;
+    background-color: #e4f8f8;
+    padding: 0;
+    height: 50px;
+    &-li {
+      color: white;
+      z-index: 1;
+      span {
+        display: flex;
+        ion-icon {
+          padding: 6px;
+          font-size: 1.3em;
+        }
+      }
+    }
+  }
+}

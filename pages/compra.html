@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de ropa</title>
+  <!-- Libreria FrameWork -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500&display=swap" rel="stylesheet">
+ <!-- Principales Js Css -->
+  <script src="../script.js" defer></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container p-0">
+        <header class="header">
+            <section class="section">
+                <label for="section__menu-input" class="section__menu-label"><i class="bi bi-list"></i></label>
+                <input  type="checkbox"  id="section__menu-input" class="section__menu-input">
+                <label class="section__nav-close"  for="section__menu-input"><i class="bi bi-x-circle"></i></label>
+                <nav class="section__nav">
+                    <ul class="section__nav-lista" id="opciones">
+                      <li class="section__nav-lista--gray"><a href="../index.html">Inicio</a></li>
+                      <li class="section__nav-lista--default"><a href="">Mujer</a></li>
+                      <li class="section__nav-lista--default"><a href="">Infantil</a></li>
+                      <li class="section__nav-lista--default"><a href="">Infantil</a></li>
+                      <li class="section__nav-lista--default"><a href="">Deporte</a></li>
+                      <li class="section__nav-lista--default"><a href="">Envio</a></li>
+                      <li class="section__nav-lista--default"><a href="../pages/form.html">Ingresa</a></li>
+                      <li class="section__nav-lista--default"><a href="">Marcas</a></li>
+                    </ul>
+                  </nav>
+                  <div class="section__logo">
+                    <h2 class="section__logo-h2" id="jazmin">Jazmin</h2>
+                  </div>
+                  <div class="section__icons">
+                    <input type="checkbox" id="dropdowncart" class="section__icons-checkbox">
+                    <div class="section__icons-menu">
+                      <ul class="section__icons-menu-lista">
+                        <div id="listcart">
+                        </div>
+                        <span class="section__icons-menu-lista-button">
+                          <button><a href="./pages/compra.html">Finalizar Compra</a></button>
+                        </span>
+                      </ul>
+                      <label for="dropdowncart" class="section__icons-menu-close"><i class="bi bi-x-circle"></i></label>
+                    </div>
+                    <label for="dropdowncart"  class="bi bi-heart section__icons-heart" id="header_hearth"></label>
+                    <label for="dropdowncart" class="bi bi-cart section__icons-market" id="header_cart"></label>
+                </section>
+                <section class="sectionb">
+                    <div class="sectionb__search">
+                      <input type="text" class="sectionb__search-input" placeholder="¿Que estas buscando?">
+                    </div>
+                </section>
+        </header>
+        <main>
+            <section class="section section--gray""> 
+                <span class="compra" id="compra"></span>
+                <div class="section__buy" id="carritototal">
+                  <button id="btn_comprar">Comprar</button></div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

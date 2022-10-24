@@ -1,0 +1,22 @@
+/* MIXINS - FLEXS */
+@mixin flexbox($just, $align,$direction:row, $corte:nowrap,){
+    justify-content: $just;
+    align-items: $align;
+    flex-flow:$direction,$corte ;
+    display: flex;
+}
+
+@mixin flexbox-self ($just,$align,$direction:row ,$corte:nowrap){
+    justify-self: $just;
+    align-self: $align;
+    display: flex;
+    flex-flow: $direction,$corte;
+}
+/* MIXINS-GRID */
+@mixin grid ($col:1,$row:1,$space:0em){
+    display: grid;
+    grid-template-columns: repeat($col,1fr);
+    grid-template-rows: repeat($row,1fr);
+    gap:$space;
+
+}

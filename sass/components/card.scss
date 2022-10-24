@@ -1,0 +1,74 @@
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+.vista {
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.cardview {
+  height: 500px;
+  width: 300px;
+  background-color: rgb(228, 248, 248);
+  padding: 3px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid black;
+  .cardview__form {
+    &-button {
+      border: none;
+      position: absolute;
+      right: 0;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: #fcfcfb;
+      margin: 3px;
+      border: 1px solid white;
+      &::before {
+        content: '_';
+        color: transparent;
+        display: block;
+        height: 100%;
+        width: 100%;
+        background-image: url('../../images/svghearth.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+  .cardview__imagen {
+    overflow: hidden;
+    img {
+      height: 400px;
+      width: 300px;
+    }
+  }
+  .cardview__content {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    padding: 5px;
+    &-detail {
+      font-size: 0.8em;
+      margin: 5px 0px 0px;
+      flex-grow: 1;
+    }
+    &-price {
+      margin: 0;
+      flex-grow: 1;
+    }
+    &-share {
+      font-size: 0.8rem;
+      flex-grow: 1;
+    }
+    &-mark {
+      font-size: 0.7em;
+      color: gray;
+    }
+  }
+}

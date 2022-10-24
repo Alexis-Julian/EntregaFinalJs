@@ -1,0 +1,29 @@
+{
+  "name": "prueba",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass --include-path sass ./sass/index.scss ./css/style.css  -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alexis-Julian/Portafolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alexis-Julian/Portafolio/issues"
+  },
+  "homepage": "https://github.com/Alexis-Julian/Portafolio#readme",
+  "devDependencies": {
+    "node-sass": "^7.0.1",
+    "prettier": "2.7.1"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "i": "^0.3.7",
+    "pnpm": "^7.13.4",
+    "yarn": "^1.22.19"
+  }
+}

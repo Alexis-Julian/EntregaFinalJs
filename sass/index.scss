@@ -1,0 +1,22 @@
+@import 'utilities/variables';
+@import 'utilities/functions';
+@import 'utilities/mixins';
+
+@import 'base/reset';
+@import 'base/typo';
+
+
+@import 'layout/navigation';
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/forms';
+
+@import 'components/dropdownmenu';
+@import 'components/buttons';
+@import 'components/card.scss';
+
+/* @import 'pages/acerca'; */
+@import 'pages/home';
+@import 'pages/form';
+@import 'pages/compra'
