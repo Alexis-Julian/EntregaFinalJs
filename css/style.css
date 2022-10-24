@@ -248,7 +248,7 @@ header {
   transform: scale(1);
   transition: 300ms; }
   .listcart .cartanimacion {
-    transform: translateY(-400px);
+    transform: translateY(-300px) scale(0.1);
     transition: 300ms; }
   .listcart .borrar {
     display: none; }

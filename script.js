@@ -50,7 +50,7 @@ async function Leer() {
   productos.forEach((elemento) => {
     let { alt, id, photographer, width } = elemento;
     let { portrait } = elemento.src;
-    cardsarr.push({ id: id, detalle: alt, marca: photographer, precio: width, url: portrait });
+    cardsarr.push({ id: id, detalle: alt, marca: photographer, precio: width, url: portrait, estado: 'I' });
   });
   /* Creacion de tarjeas de la pagina principal la funcion 
   crear_elementos hace el trabajo para las cards */
@@ -147,18 +147,24 @@ function renderizar_carro(cart, listcart) {
 
 function anadir_carro(e, cart) {
   let id = e.target.id;
-  const bin = cart.findIndex((elemento) => {
+  const aux = cart.findIndex((elemento) => {
+    return elemento.id == id;
+  });
+  const aux1 = cartcompra.findIndex((elemento) => {
     return elemento.id == id;
   });
   /* Busca el id del producto en el carrito si no esta siginifica que nunca lo agrego
   por la cual pasa a agregarlo en caso contrario procede a negarle a agregarlo */
-  if (bin == -1) {
+  if (aux == -1 && aux1 == -1) {
     const indice = cardsarr.findIndex((elemento) => {
       return elemento.id == id;
     });
     let { url, detalle, precio } = cardsarr[indice];
+    /* Cambia el estado al mandar a favorito el producto */
+    cardsarr[indice].estado = 'G';
     cart.push(cardsarr[indice]);
     sessionStorage.setItem('cart', JSON.stringify(cart));
+    /* Manipulacion del DOOM */
     let li = crear_elemento_carr(url, detalle, precio, id);
     listcart.append(li);
     /* Alertas */
@@ -168,19 +174,28 @@ function anadir_carro(e, cart) {
     alertify.error('Producto ya agregado');
   }
 }
-
-function eleminarele_carro(dea, cart) {
-  for (let k = 0; k < listcart.children.length; k++) {
-    if (listcart.children[k].id == dea) {
-      let li = listcart.children[k];
+function eleminarele_carro(id, cart) {
+  let longlistcart = listcart.children;
+  /* Borra del DOOM el elemento eliminador */
+  for (const element of longlistcart) {
+    if (element.id == id) {
+      let li = element;
       li.classList.add('clear');
     }
   }
   let pos = -1;
+  /* Manipula el carrito */
   for (let i in cart) {
-    if (cart[i].id == dea) {
+    if (cart[i].id == id) {
       pos = i;
       break;
+    }
+  }
+  /* Manipula el contendeor de las tarjetas */
+  console.log(cardsarr);
+  for (let i in cardsarr) {
+    if (cardsarr[i].id == id) {
+      cardsarr[i].estado = 'I';
     }
   }
   let lirem = listcart.children[pos];
@@ -189,7 +204,6 @@ function eleminarele_carro(dea, cart) {
   }, 250);
 
   pos != -1 ? cart.splice(pos, 1) : undefined;
-  sessionStorage.setItem('cart', JSON.stringify(cart));
 }
 
 /* Zona para agregar tarjetas manualmente */
@@ -241,7 +255,13 @@ if (pathname == '/index.html') {
       if (e.target.tagName == 'SPAN' || e.target.tagName == 'IMG' || e.target.tagName == 'I') {
         idr = e.target.parentNode.id;
       }
-      eleminarele_carro(idr, cart);
+      if (indicador.classList.length < 2) {
+        eleminarele_carro(idr, cart);
+        sessionStorage.setItem('cart', JSON.stringify(cart));
+      } else {
+        eleminarele_carro(idr, cartcompra);
+        sessionStorage.setItem('cartbuy', JSON.stringify(cartcompra));
+      }
       indicador.classList.add('active');
       setTimeout(() => {
         indicador.classList.remove('active');
@@ -251,21 +271,34 @@ if (pathname == '/index.html') {
   });
   /* Gesto para agregar un producto a la zona de compra solo
   deslizamiento hacia arriba libreria hammer */
+  console.log(cart);
   hammer.on('swipeup', (e) => {
     let idr;
+    const longcartdoom = listcart.children;
     if (e.target.tagName == 'SPAN' || e.target.tagName == 'IMG' || e.target.tagName == 'LI' || e.target.tagName == 'I') {
       idr = e.target.id;
       if (e.target.tagName == 'SPAN' || e.target.tagName == 'IMG' || e.target.tagName == 'I') {
         idr = e.target.parentNode.id;
       }
+      /* Manipluacion Logica */
       for (const producto of cart) {
-        if (producto.id == idr && cartcompra.find((aux) => aux.id == idr) == undefined) {
+        if (producto.id == idr) {
+          producto.estado = 'F';
           cartcompra.push(producto);
-          sessionStorage.setItem('cartbuy', JSON.stringify(cartcompra));
-        } else {
-          break;
         }
       }
+      /* Manipulacion del DOOM */
+      for (const index in longcartdoom) {
+        if (listcart.children[index].id == idr) {
+          listcart.children[index].classList.add('cartanimacion');
+          setTimeout(() => {
+            listcart.children[index].remove();
+          }, 250);
+          cart.splice(index, 1);
+        }
+      }
+      sessionStorage.setItem('cart', JSON.stringify(cart));
+      sessionStorage.setItem('cartbuy', JSON.stringify(cartcompra));
     }
   });
   /* Buscador de tarjetas sobre el array cardsarr */
@@ -297,16 +330,20 @@ if (pathname == '/index.html') {
     indicador.classList.add('activecart');
     listcart.classList.add('listcart-activo');
     botoncomp.classList.add('activo');
+    listcart.innerHTML = '';
+    renderizar_carro(cartcompra, listcart);
   });
   favorito.addEventListener('click', (e) => {
     indicador.classList.remove('activecart');
     listcart.classList.remove('listcart-activo');
     botoncomp.classList.remove('activo');
+    listcart.innerHTML = '';
+    renderizar_carro(cart, listcart);
   });
 }
 /* Zona para finalizar compra */
 if (pathname == '/pages/compra.html') {
-  const cart = traer_carro();
+  const cart = traer_carro_compra();
   renderizar_carro(cart, com);
   const preciototal = cart.reduce((acc, item) => {
     return (acc += parseInt(item.precio));

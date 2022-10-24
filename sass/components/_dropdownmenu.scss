@@ -57,7 +57,7 @@
   transform: scale(1);
   transition: 300ms;
   .cartanimacion {
-    transform: translateY(-400px);
+    transform: translateY(-300px) scale(0.1);
     transition: 300ms;
   }
   .borrar {
