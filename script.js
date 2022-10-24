@@ -104,8 +104,8 @@ function proceso_carga(b, car) {
   section3.append(price, detail);
   /* -------- */
 }
-let cart = sessionStorage.length == 1 ? true : false;
 function traer_carro() {
+  let cart = sessionStorage.length == 1 ? true : false;
   cart ? sessionStorage.setItem('cart', JSON.stringify((cart = []))) : (cart = JSON.parse(sessionStorage.getItem('cart')));
   return cart;
 }
